@@ -1,0 +1,21 @@
+{
+  "name": "flac-to-mp3",
+  "version": "1.0.0",
+  "description": "Convert a .flac files to .mp3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "flac",
+    "mp3",
+    "convert"
+  ],
+  "author": "Adrian Lynch (adi_ady_ade@hotmail.com)",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^3.5.0",
+    "lodash-fp": "^0.5.1"
+  },
+  "devDependencies": {}
+}
