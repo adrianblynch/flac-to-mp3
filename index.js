@@ -1,9 +1,6 @@
 var fs = require("fs")
 var childProcess = require("child_process")
 
-// var dir = "/Users/adrian.lynch/Music/Sepultura - 1996 - Roots/"
-//var dir = "./"
-
 var endsWith = function(str, end, caseInsensitive) {
 	if (caseInsensitive) {
 		str = str.toLowerCase()
@@ -12,34 +9,31 @@ var endsWith = function(str, end, caseInsensitive) {
 	return str.split("").slice(-5).join("") === end
 }
 
-exports.convertDir = function(dir, onData) {
+exports.convert = function(file, onData, onDone) {
 
-	fs.readdir(dir, function(err, fileNames) {
+	var args = [
+		"-i", file,
+		"-ab", "320k",
+		"-map_metadata", "0",
+		"-id3v2_version", "3",
+		"-y",
+		file.replace(/.flac$/i, ".mp3")
+	]
 
-		fileNames = fileNames.filter(function(fileName) {
-			return endsWith(fileName, ".flac", true)
-		})
+	var ffmpeg = childProcess.spawn("ffmpeg", args)
 
-		fileNames.forEach(function(fileName) {
+	// NOTE: ffmpeg outputs to standard error - Always has, always will no doubt
 
-			args = [
-				"-i", dir + fileName,
-				"-ab", "320k",
-				"-map_metadata", "0",
-				"-id3v2_version", "3",
-				"-y",
-				dir + fileName.replace(/.flac$/i, ".mp3")
-			]
-
-			var ffmpeg = childProcess.spawn("ffmpeg", args)
-
-			// NOTE: ffmpeg outputs to standard error - Always has, always will no doubt
-
-			ffmpeg.stdout.on("data", onData)
-			ffmpeg.stderr.on("data", onData)
-
-		})
-
+	ffmpeg.stdout.on("data", function(data) {
+		onData({out: data})
+	})
+	ffmpeg.stderr.on("data", function(data) {
+		onData({err: data})
 	})
 
-}
+};
+
+// TODO: Expose a way to convert all files in a dir
+// exports.convertDir = function(dir, onData, onDone) {
+
+// }
