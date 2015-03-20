@@ -2,7 +2,9 @@
 
 var f2m = require("../")
 
-// Full dir for now - Should be relative to this file
-f2m.convertDir("/Users/adrian.lynch/Play/Node/flac-to-mp3/test/files/", function(data) {
-	console.log("Line:" + data)
-})
+f2m.convert(
+	"path/to/file.flac",
+	function(data) {
+		console.log(data.err.toString());
+	}
+)
