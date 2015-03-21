@@ -3,7 +3,7 @@
 var f2m = require("../")
 
 f2m.convert(
-	"path/to/file.flac",
+	__dirname + "/BIS1447-002-flac_16.flac",
 	function(data) {
 		console.log(data.err.toString());
 	}
