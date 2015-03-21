@@ -33,7 +33,7 @@ exports.convert = function(file, onData, onDone) {
 
 };
 
-// TODO: Expose a way to convert all files in a dir
+// TODO: Expose a way to convert all files in a dir - Or should this be on the user?
 // exports.convertDir = function(dir, onData, onDone) {
 
 // }
