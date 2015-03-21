@@ -56,7 +56,7 @@ f2m.convert(
 
 Soon to be suited up with Mocha and Chai.
 
-Test files are available from from [www.eclassical.com](http://www.eclassical.com/pages/24-bit-faq.html).
+Test files are available from [www.eclassical.com](http://www.eclassical.com/pages/24-bit-faq.html).
 
 The tests use the following files:
 

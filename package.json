@@ -16,7 +16,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/adrianblynch/flac-to-mp3.git"
-  }
+  },
   "dependencies": {},
   "devDependencies": {}
 }
