@@ -27,14 +27,14 @@ Hyper fast Audio and Video encoder
 usage: ffmpeg [options] [[infile options] -i infile]... {[outfile options] outfile}...
 ```
 
-Install flac-to-mp3
+### Install flac-to-mp3
 
 ```
 npm install flac-to-mp3
 ```
 
 
-To use flac-to-mp3:
+### To use flac-to-mp3
 
 ```
 var f2m = require("../")
