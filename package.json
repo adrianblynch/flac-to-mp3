@@ -13,6 +13,10 @@
   ],
   "author": "Adrian Lynch (adi_ady_ade@hotmail.com)",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adrianblynch/flac-to-mp3.git"
+  }
   "dependencies": {},
   "devDependencies": {}
 }
