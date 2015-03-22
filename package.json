@@ -1,6 +1,6 @@
 {
   "name": "flac-to-mp3",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Convert .flac files to .mp3",
   "main": "index.js",
   "scripts": {
