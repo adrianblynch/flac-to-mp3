@@ -37,7 +37,7 @@ npm install flac-to-mp3
 ### To use flac-to-mp3
 
 ```
-var f2m = require("../")
+var f2m = require("flac-to-mp3")
 
 f2m.convert(
 	"path/to/file.flac",
