@@ -1,12 +1,12 @@
 var fs = require("fs")
 var childProcess = require("child_process")
 
-var endsWith = function(str, end, caseInsensitive) {
+var endsWith = function(str, end, caseInsensitive) { // TODO: Not currently used but ready for use by convertDir()
 	if (caseInsensitive) {
 		str = str.toLowerCase()
 		end = end.toLowerCase()
 	}
-	return str.split("").slice(-5).join("") === end
+	return str.split("").slice(-5).join("") === end // TODO: Remove the magic -5
 }
 
 exports.convert = function(file, onData, onDone) {
