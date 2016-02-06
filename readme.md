@@ -51,6 +51,7 @@ f2m.convert(
 
 - Create a proper test suite
 - Add a `convertDir()` method
+- Turn into a CLI
 
 ## Tests
 
