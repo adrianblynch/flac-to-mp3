@@ -4,12 +4,9 @@ Convert .flac files to .mp3.
 
 ## Usage
 
-First install ffmpeg.
+First install [ffmpeg](https://www.ffmpeg.org/download.html).
 
-On Mac, `brew install ffmpeg` is the easiest option. For others, visit [ffmpeg.org](https://www.ffmpeg.org/download.html).
-
-To test whether ffmpeg is installed, simply run `ffmpeg` on the command line. You should see output like the following:
-
+To test whether ffmpeg is installed, simply run `ffmpeg` on the command line.
 ```
 ffmpeg version 2.6 Copyright (c) 2000-2015 the FFmpeg developers
   built with Apple LLVM version 6.0 (clang-600.0.56) (based on LLVM 3.5svn)
