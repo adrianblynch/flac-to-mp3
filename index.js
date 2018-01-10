@@ -30,7 +30,9 @@ exports.convert = function(file, onData, onDone) {
 	ffmpeg.stderr.on("data", function(data) {
 		onData({err: data})
 	})
-
+	ffmpeg.stderr.on("close", function(){
+		onDone()
+	})
 };
 
 // TODO: Expose a way to convert all files in a dir - Or should this be on the user?
