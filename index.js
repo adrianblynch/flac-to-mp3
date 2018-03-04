@@ -1,19 +1,14 @@
 var fs = require("fs")
 var childProcess = require("child_process")
 
-var endsWith = function(str, end, caseInsensitive) { // TODO: Not currently used but ready for use by convertDir()
-	if (caseInsensitive) {
-		str = str.toLowerCase()
-		end = end.toLowerCase()
-	}
-	return str.split("").slice(-5).join("") === end // TODO: Remove the magic -5
-}
-
-exports.convert = function(file, onData, onDone) {
-
+//convert single file
+//bitrate is in thousands
+function convert(file, onData, onDone, bitrate) {
+	if (bitrate === undefined){bitrate=320}			//makes bitrate an optional argument, default is 320
+	if (typeof bitrate!=="number"){throw new Error("(flac-to-mp3) Bitrate argument must be an integer")}
 	var args = [
 		"-i", file,
-		"-ab", "320k",
+		"-ab", bitrate.toString()+"k",
 		"-map_metadata", "0",
 		"-id3v2_version", "3",
 		"-y",
@@ -35,7 +30,24 @@ exports.convert = function(file, onData, onDone) {
 	})
 };
 
-// TODO: Expose a way to convert all files in a dir - Or should this be on the user?
-// exports.convertDir = function(dir, onData, onDone) {
+exports.convert = convert
 
-// }
+//The directory convert function. Does not go into subfolders.
+exports.convertDir = function(dir, onData, onDone, bitrate) {
+	var i=0;
+	var list=fs.readdirSync(dir)//get directory listing
+	function loop(){			//recursive function
+		if(i<list.length){										
+			if(list[i].toLowerCase().split(".")[1]==="flac"){					//without this check it overwrites existing mp3 files with 0 bytes
+				convert(dir+"/"+list[i], onData,loop, bitrate)	//call the convert function
+			}else{
+				i++;	//increase the count to avoid infinite loop B)
+				loop()	//call the function again
+			}
+		}else{
+			onDone()	//Only called when entire directory is done
+		}
+		i++
+	}
+	loop()
+}

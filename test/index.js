@@ -2,9 +2,13 @@
 
 var f2m = require("../")
 
-f2m.convert(
-	__dirname + "/BIS1447-002-flac_16.flac",
+f2m.convertDir(
+	"./flacs",
 	function(data) {
 		console.log(data.err.toString())
-	}
+	},
+	function(){
+		console.log("done")
+	},
+	192
 )
