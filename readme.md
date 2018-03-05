@@ -4,12 +4,9 @@ Convert .flac files to .mp3.
 
 ## Usage
 
-First install ffmpeg.
+First install [ffmpeg](https://www.ffmpeg.org/download.html).
 
-On Mac, `brew install ffmpeg` is the easiest option. For others, visit [ffmpeg.org](https://www.ffmpeg.org/download.html).
-
-To test whether ffmpeg is installed, simply run `ffmpeg` on the command line. You should see output like the following:
-
+To test whether ffmpeg is installed, simply run `ffmpeg` on the command line.
 ```
 ffmpeg version 2.6 Copyright (c) 2000-2015 the FFmpeg developers
   built with Apple LLVM version 6.0 (clang-600.0.56) (based on LLVM 3.5svn)
@@ -33,8 +30,19 @@ usage: ffmpeg [options] [[infile options] -i infile]... {[outfile options] outfi
 npm install flac-to-mp3
 ```
 
+### Functions
 
-### To use flac-to-mp3
+```
+convert(path, onData, onDone, [bitrate]) //converts one file. onData and onDone are callbacks. Bitrate is optional, defaulting to 320.
+```
+
+```
+convertDir(path, onData, onDone, [bitrate]) //converts an entire directory, the above rules still apply
+```
+
+### Examples
+
+The bitrate argument is optional
 
 ```
 var f2m = require("flac-to-mp3")
@@ -43,14 +51,32 @@ f2m.convert(
 	"path/to/file.flac",
 	function(data) {
 		console.log(data.err.toString())
-	}
+	},
+	function(){
+		console.log("Conversion Complete.")
+	},
+	320
 )
 ```
 
+```
+var f2m=require("flac-to-mp3")
+
+f2m.convertDir(
+	"path/to/directory",
+	function(data){
+		console.log(data.err.toString())
+	},
+	function(){
+		console.log("Conversion Complete")
+	},
+	320
+)
+```
 ## Todo
 
 - Create a proper test suite
-- Add a `convertDir()` method
+- ~~Add a `convertDir()` method~~
 - Turn into a CLI
 
 ## Tests
