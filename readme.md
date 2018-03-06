@@ -37,25 +37,25 @@ npm install flac-to-mp3
 ### To use flac-to-mp3
 
 ```
-var f2m = require("flac-to-mp3")
+const FlacConverter = require("flac-to-mp3")
+const converter = new FlacConverter();
 
-f2m.convert(
-	"path/to/file.flac",
-	function(data) {
-		console.log(data.err.toString())
-	}
-)
+converter.convertFile('path/to/file.flac')
+      .then((file) => {
+        // The file is converted
+      })
+      .catch((err) => {
+        // An error occured
+      });
 ```
 
 ## Todo
 
-- Create a proper test suite
-- Add a `convertDir()` method
 - Turn into a CLI
 
 ## Tests
 
-Soon to be suited up with Mocha and Chai.
+Test are implemented with Jest: run them with `npm test`.
 
 Test files are available from [www.eclassical.com](http://www.eclassical.com/pages/24-bit-faq.html).
 
