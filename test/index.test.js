@@ -14,6 +14,7 @@ const testFiles = [
 ];
 
 const downloadDir = './test/resources/test-dir/';
+const downloadFile = './test/resources/to-convert.flac';
 
 const download = (url, dest) => new Promise((resolve, reject) => {
   const file = fs.createWriteStream(dest);
@@ -38,10 +39,15 @@ describe('FlacConverter TEST', () => {
       .map(urlFlacFile => ({ url: urlFlacFile, filePath: `${downloadDir}${getFileName(urlFlacFile)}` }))
       .filter(file => !fs.existsSync(file.filePath))
       .map(file => download(file.url, file.filePath)));
+
+    // download a single file for testing
+    if (!fs.existsSync(downloadFile)) {
+      await download(testFiles[0], downloadFile);
+    }
   }, 500000);
 
   test('Convert a FLAC file', () =>
-    converter.convertFile('./test/resources/to-convert.flac')
+    converter.convertFile(downloadFile)
       .then((file) => {
         expect(file.code).toBe(0);
         expect(file.fileConverted).toMatch(/resources\/to-convert.mp3$/);
