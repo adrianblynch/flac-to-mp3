@@ -4,7 +4,7 @@
   "description": "Convert .flac files to .mp3",
   "main": "index.js",
   "scripts": {
-    "test": "node test/index.js"
+    "test": "jest"
   },
   "keywords": [
     "flac",
@@ -12,11 +12,21 @@
     "convert"
   ],
   "author": "Adrian Lynch (adi_ady_ade@hotmail.com)",
+  "contributors": [
+    "Manuel Spigolon <behemoth89@gmail.com> (https://github.com/Eomm)"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/adrianblynch/flac-to-mp3.git"
   },
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint": "^4.18.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jest": "^21.12.2",
+    "glob": "^7.1.2",
+    "jest": "^22.4.2"
+  }
 }
