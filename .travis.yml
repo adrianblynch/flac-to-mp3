@@ -26,7 +26,7 @@ before_install:
   - sudo wget http://www.eclassical.com/custom/eclassical/files/BIS1536-001-flac_24.flac
   - sudo wget http://www.eclassical.com/custom/eclassical/files/BIS1447-002-flac_16.flac
   - sudo wget http://www.eclassical.com/custom/eclassical/files/BIS1447-002-flac_24.flac
-  - cp BIS1536-001-flac_16.flac $TRAVIS_BUILD_DIR/test/resources/to-convert.flac
+  - sudo cp BIS1536-001-flac_16.flac $TRAVIS_BUILD_DIR/test/resources/to-convert.flac
   # End
   - cd $TRAVIS_BUILD_DIR
 install:
