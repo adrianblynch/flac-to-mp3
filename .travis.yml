@@ -11,7 +11,7 @@ before_install:
   - echo "Made dir"
   - cd ffmpeg
   - echo "Downloading"
-  - wget $static_host
+  - sudo wget $static_host
   - echo "Download finished"
   - echo "Unzipping"
   - sudo tar xf $filename --strip-components=1
