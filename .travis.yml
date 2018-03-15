@@ -7,15 +7,15 @@ before_install:
   - export static_host=https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-64bit-static.tar.xz
   - export filename=ffmpeg-git-64bit-static.tar.xz
   - cd /usr/local/bin
-  - mkdir ffmpeg
+  - sudo mkdir ffmpeg
   - echo "Made dir"
   - cd ffmpeg
   - echo "Downloading"
   - wget $static_host
   - echo "Download finished"
   - echo "Unzipping"
-  - tar xf $filename --strip-components=1
-  - rm $filename
+  - sudo tar xf $filename --strip-components=1
+  - sudo rm $filename
   - echo "Symlinking"
   - ln -s /usr/local/bin/ffmpeg/ffmpeg /usr/bin/ffmpeg
   - ln -s /usr/local/bin/ffmpeg/ffpropbe /usr/bin/ffpropbe
