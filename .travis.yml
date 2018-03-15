@@ -8,17 +8,19 @@ before_install:
   - export filename=ffmpeg-git-64bit-static.tar.xz
   - cd /usr/local/bin
   - sudo mkdir ffmpeg
-  - echo "Made dir"
+  #Made dir
   - cd ffmpeg
-  - echo "Downloading"
+  #Downloading
   - sudo wget $static_host
-  - echo "Download finished"
-  - echo "Unzipping"
+  #Download finished
+  #Unzipping
   - sudo tar xf $filename --strip-components=1
   - sudo rm $filename
-  - echo "Symlinking"
+  #Symlinking
   - sudo ln -s /usr/local/bin/ffmpeg/ffmpeg /usr/bin/ffmpeg
   - sudo ln -s /usr/local/bin/ffmpeg/ffpropbe /usr/bin/ffpropbe
-  - echo "FFmpeg installed!"
+  #FFmpeg installed!
 install:
   - npm install
+script:
+  - jest
