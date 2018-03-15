@@ -8,20 +8,20 @@ before_install:
   - export FILENAME=ffmpeg-git-64bit-static.tar.xz
   - cd /usr/local/bin
   - sudo mkdir ffmpeg
-  #Made dir
+  # Made dir
   - cd ffmpeg
-  #Downloading
+  # Downloading
   - sudo wget $STATIC_HOST
-  #Download finished
-  #Unzipping
+  # Download finished
+  # Unzipping
   - sudo tar xf $FILENAME --strip-components=1
   - sudo rm $FILENAME
-  #Symlinking
+  # Symlinking
   - sudo ln -s /usr/local/bin/ffmpeg/ffmpeg /usr/bin/ffmpeg
   - sudo ln -s /usr/local/bin/ffmpeg/ffpropbe /usr/bin/ffpropbe
-  #FFmpeg installed!
+  # FFmpeg installed!
   - cd $TRAVIS_BUILD_DIR
 install:
   - npm install --dev
 script:
-  - npm test
+  - sudo npm test
